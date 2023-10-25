@@ -58,8 +58,13 @@ Librerias :
 ## una mini guia de como un usuario utilizaría el software o la aplicación
 
 ## Fuentes:
+
 -Pacheco, J. (2019, mayo 1). Wordpress High Availability on kubernetes - Jose Pacheco. Medium. https://medium.com/@icheko/wordpress-high-availability-on-kubernetes-f6c0bcc2f28d
+
+
 -NetworkChuck [@NetworkChuck]. (2020, septiembre 8). you need to learn Kubernetes RIGHT NOW!! Youtube. https://www.youtube.com/watch?v=7bA0gTroJjw
+
+
 -Run a Single-Instance Stateful Application. (s/f). Kubernetes. Recuperado el 25 de octubre de 2023, de https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
 
 
