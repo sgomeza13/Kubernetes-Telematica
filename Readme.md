@@ -52,6 +52,7 @@ Librerias :
 
 
 ## como se instala y ejecuta.
+### Base de datos
 -Lo primero que debes realizar es crear una máquina virtual, una vez creada le instalas Docker con los siguientes comandos:
 ``` 
 sudo apt update
@@ -84,9 +85,26 @@ sudo apt install mariadb-client
 ```
 mysql -u user -p -h 10.128.0.7 -P 3306
 ```
+### Aplicación Wordpress
+-Crear 3 instancias de maquinas virtuales en GCP
+
+-Añadir la siguiente regla en el firewall
+![image](https://github.com/sgomeza13/reto4_telematica/assets/74980999/c0734f27-429e-4954-aadc-fb2b3dae842f)
+
+-Configurar el servidor NFS 
+      -Seguir el paso 1 y 2 de la siguiente guia : https://microk8s.io/docs/nfs
+      
+      -Crear el storage class que esta en la carpeta NFS que esta en este repositorio.
+      ```
+      microk8s kubectl apply -f sc-nfs.yaml
+      ```
+
+      -Crear el PVC 
+      ```
+      microk8s kubectl apply -f wordpress-nfs-pvc.yaml
+      ```
 
 
-## una mini guia de como un usuario utilizaría el software o la aplicación
 
 ## Fuentes:
 
