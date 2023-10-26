@@ -34,22 +34,8 @@ Nos estamos basando en la siguiente arquitectura :
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
 
-### Componentes:
-
-
-
-# 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
-
-Lenguaje de programacion: 
-
-Librerias :
-
-## detalles del desarrollo.
-
-
-# descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
-## IP o nombres de dominio en nube o en la máquina servidor.
-
+### Componentes: 
+- Docker, NFS, KUBECTL, MicroK8S y NGINX.
 
 ## como se instala y ejecuta.
 ### Base de datos
@@ -149,8 +135,12 @@ sudo nano /etc/nginx/nginx.conf
 
 Puedes copiar el contenido de el archivo de este repositorio llamado "nginx.config", pero cambiando las IPs con las de tus maquinas virtuales.
 
--Por ultimo crear el archivo de Docker compose, descarga el archivo "docker-compose.yml" y coloca 
+-Por ultimo crear el archivo de Docker compose, descarga el archivo "docker-compose.yml" y por ultimo levantar el servidor con el siguiente comando 
+```
+sudo docker-compose up
+```
 
+Una ves dentro de la aplicación puedes agregar la IP de la base de datos creada anteriormente , asi como los otros parametros
 
 ## Fuentes:
 
