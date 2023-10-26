@@ -115,9 +115,10 @@ microk8s kubectl get pods
 ```
 
 - Añadir el service
-  ```
+  
+```
 microk8s kubectl apply -f wordpress-service.yaml
-  ```
+```
 
 - Por ultimo agregas las otras dos maquinas virtuales, este primer comando se ejecuta en el nodo donde se instalo el NFS
 ```
@@ -141,6 +142,10 @@ ejemplo: microk8s join 10.128.0.25:25000/1b5df5c82650c92ab3783bf630fdc5ac/dc9bbe
 
 
 - Run a Single-Instance Stateful Application. (s/f). Kubernetes. Recuperado el 25 de octubre de 2023, de https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
+
+
+- Use NFS for persistent volumes. (s/f). Microk8s.Io. Recuperado el 26 de octubre de 2023, de https://microk8s.io/docs/nfs
+
 
 
 
