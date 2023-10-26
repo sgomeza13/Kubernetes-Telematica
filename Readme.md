@@ -131,7 +131,23 @@ microk8s join <ip>/<token>
 ```
 ejemplo: microk8s join 10.128.0.25:25000/1b5df5c82650c92ab3783bf630fdc5ac/dc9bbedabc37
 
-** Importante **: repetir con la otra maquina virtual.
+**IMPORTANTE:** repetir con la otra maquina virtual.
+
+### Crear balanceador de carga
+
+- Crear una nueva maquina virtual y debes volver a instalar Docker y Docker compose en ella.
+  
+- Ejecutar el siguiente comando para crear una carpeta 
+```
+sudo mkdir /etc/nginx
+```
+
+- Ejecutar el siguiente comando para crear un archivo
+```
+sudo nano /etc/nginx/nginx.conf
+```
+Puedes copiar el contenido de el archivo de este repositorio llamado "nginx.config"
+
 
 ## Fuentes:
 
