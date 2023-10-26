@@ -21,15 +21,16 @@ Nos estamos basando en la siguiente arquitectura :
 -Pacheco, J. (2019, mayo 1). Wordpress High Availability on kubernetes - Jose Pacheco. Medium. https://medium.com/@icheko/wordpress-high-availability-on-kubernetes-f6c0bcc2f28d
 
 ## ¿Que se logró y que no se logró?:
-### A Nivel funcional:
+
 - **Se logró**
+
+-Desplegar una aplicación de Wordpress en 3 nodos diferentes, configurado con alta disponibilidad y que comparten un sistema de archivos NFS y que se encuentran desplegados como "Nodeports", ademas de una base de datos distribuida que se encuentra aparte de las instancias de Wordpress.
 
 - **No se logró**:
 
-### A nivel no funcional:
-- **Se logró**
+- La base de datos se encuentre distribuida en diferentes nodos.
+- El balanceador de cargas que se conecta a las IPs de las instancias de los Wordpress.
 
-- **No se logró**
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
 
@@ -42,8 +43,6 @@ Nos estamos basando en la siguiente arquitectura :
 Lenguaje de programacion: 
 
 Librerias :
-## como se compila y ejecuta.
-
 
 ## detalles del desarrollo.
 
@@ -52,7 +51,7 @@ Librerias :
 ## IP o nombres de dominio en nube o en la máquina servidor.
 
 
-## como se como se instala y despliega.
+## como se instala y ejecuta.
 -Lo primero que debes realizar es crear una máquina virtual, una vez creada le instalas Docker con los siguientes comandos:
 ``` 
 sudo apt update
