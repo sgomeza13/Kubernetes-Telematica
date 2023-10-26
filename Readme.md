@@ -92,17 +92,19 @@ mysql -u user -p -h 10.128.0.7 -P 3306
 ![image](https://github.com/sgomeza13/reto4_telematica/assets/74980999/c0734f27-429e-4954-aadc-fb2b3dae842f)
 
 -Configurar el servidor NFS 
-      -Seguir el paso 1 y 2 de la siguiente guia : https://microk8s.io/docs/nfs
+1. Seguir el paso 1 y 2 de la siguiente guia : https://microk8s.io/docs/nfs
       
-      -Crear el storage class que esta en la carpeta NFS que esta en este repositorio.
-      ```
-      microk8s kubectl apply -f sc-nfs.yaml
-      ```
+2. Crear el storage class que esta en la carpeta NFS que esta en este repositorio.
+```
+microk8s kubectl apply -f sc-nfs.yaml
+```
 
-      -Crear el PVC 
-      ```
-      microk8s kubectl apply -f wordpress-nfs-pvc.yaml
-      ```
+3. Crear el PVC 
+```
+microk8s kubectl apply -f wordpress-nfs-pvc.yaml
+```
+
+
 
 
 
