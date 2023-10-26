@@ -53,7 +53,7 @@ Librerias :
 
 ## como se instala y ejecuta.
 ### Base de datos
--Lo primero que debes realizar es crear una máquina virtual, una vez creada le instalas Docker con los siguientes comandos:
+- Lo primero que debes realizar es crear una máquina virtual, una vez creada le instalas Docker con los siguientes comandos:
 ``` 
 sudo apt update
 sudo apt install -y docker.io
@@ -61,22 +61,22 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
--luego descargas la imagen de my-sql con el siguiente comando 
+- luego descargas la imagen de my-sql con el siguiente comando 
 ```
 docker pull mysql:5.7
 ```
 
--A continuación creas un contenedor con 
+- A continuación creas un contenedor con 
 ```
 sudo docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=my-sql -p 3306:3306 mysql:5.7
 ```
 
--Verificas que el contenedor se creo correctamente con  
+- Verificas que el contenedor se creo correctamente con  
 ```
 docker ps
 ```
 
--Ahora desde el cliente que se quiere conectar a my-sql 
+- Ahora desde el cliente que se quiere conectar a my-sql 
 ```
 sudo apt update
 sudo apt install mariadb-client
@@ -86,12 +86,12 @@ sudo apt install mariadb-client
 mysql -u user -p -h 10.128.0.7 -P 3306
 ```
 ### Aplicación Wordpress
--Crear 3 instancias de maquinas virtuales en GCP
+- Crear 3 instancias de maquinas virtuales en GCP
 
 -Añadir la siguiente regla en el firewall
 ![image](https://github.com/sgomeza13/reto4_telematica/assets/74980999/c0734f27-429e-4954-aadc-fb2b3dae842f)
 
--Configurar el servidor NFS 
+- Configurar el servidor NFS 
 1. Seguir el paso 1 y 2 de la siguiente guia : https://microk8s.io/docs/nfs
       
 2. Crear el storage class que esta en la carpeta NFS que esta en este repositorio.
@@ -104,19 +104,43 @@ microk8s kubectl apply -f sc-nfs.yaml
 microk8s kubectl apply -f wordpress-nfs-pvc.yaml
 ```
 
+- Añadir el deployment de Wordpress
+```
+  microk8s kubectl apply -f wordpress-deployment.yaml
+```
+  
+Verificar que el POD se a creado correctamente 
+```
+microk8s kubectl get pods
+```
 
+- Añadir el service
+  ```
+microk8s kubectl apply -f wordpress-service.yaml
+  ```
 
+- Por ultimo agregas las otras dos maquinas virtuales, este primer comando se ejecuta en el nodo donde se instalo el NFS
+```
+microk8s add-node
+```
 
+Este otro comando se ejecuta en la otra maquina virtual a añadir.
+```
+microk8s join <ip>/<token>
+```
+ejemplo: microk8s join 10.128.0.25:25000/1b5df5c82650c92ab3783bf630fdc5ac/dc9bbedabc37
+
+** Importante **: repetir con la otra maquina virtual.
 
 ## Fuentes:
 
--Pacheco, J. (2019, mayo 1). Wordpress High Availability on kubernetes - Jose Pacheco. Medium. https://medium.com/@icheko/wordpress-high-availability-on-kubernetes-f6c0bcc2f28d
+- Pacheco, J. (2019, mayo 1). Wordpress High Availability on kubernetes - Jose Pacheco. Medium. https://medium.com/@icheko/wordpress-high-availability-on-kubernetes-f6c0bcc2f28d
 
 
--NetworkChuck [@NetworkChuck]. (2020, septiembre 8). you need to learn Kubernetes RIGHT NOW!! Youtube. https://www.youtube.com/watch?v=7bA0gTroJjw
+- NetworkChuck [@NetworkChuck]. (2020, septiembre 8). you need to learn Kubernetes RIGHT NOW!! Youtube. https://www.youtube.com/watch?v=7bA0gTroJjw
 
 
--Run a Single-Instance Stateful Application. (s/f). Kubernetes. Recuperado el 25 de octubre de 2023, de https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
+- Run a Single-Instance Stateful Application. (s/f). Kubernetes. Recuperado el 25 de octubre de 2023, de https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/
 
 
 
