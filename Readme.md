@@ -61,11 +61,20 @@ sudo systemctl start docker
 sudo systemctl enable docker
 ```
 
--luego descargas la imagen de my-sql con el siguiente comando : ```docker pull mysql:5.7```
+-luego descargas la imagen de my-sql con el siguiente comando 
+```
+docker pull mysql:5.7
+```
 
--A continuación creas un contenedor con : ```sudo docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=my-sql -p 3306:3306 mysql:5.7```
+-A continuación creas un contenedor con 
+```
+sudo docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_USER=user -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=my-sql -p 3306:3306 mysql:5.7
+```
 
--Verificas que el contenedor se creo correctamente con  ```docker ps```
+-Verificas que el contenedor se creo correctamente con  
+```
+docker ps
+```
 
 -Ahora desde el cliente que se quiere conectar a my-sql 
 ```
@@ -73,7 +82,9 @@ sudo apt update
 sudo apt install mariadb-client
 ```
 
-```mysql -u user -p -h 10.128.0.7 -P 3306```
+```
+mysql -u user -p -h 10.128.0.7 -P 3306
+```
 
 
 ## una mini guia de como un usuario utilizaría el software o la aplicación
