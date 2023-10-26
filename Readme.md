@@ -146,7 +146,10 @@ sudo mkdir /etc/nginx
 ```
 sudo nano /etc/nginx/nginx.conf
 ```
-Puedes copiar el contenido de el archivo de este repositorio llamado "nginx.config"
+
+Puedes copiar el contenido de el archivo de este repositorio llamado "nginx.config", pero cambiando las IPs con las de tus maquinas virtuales.
+
+-Por ultimo crear el archivo de Docker compose, descarga el archivo "docker-compose.yml" y coloca 
 
 
 ## Fuentes:
