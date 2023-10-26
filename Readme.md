@@ -13,7 +13,7 @@ Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
 ## 1. breve descripción de la actividad
 # Descripción:
 
-El reto consiste en desplegar una aplicación de código abierto WordPress, en un clúster de Kubernetes con alta disponibilidad. Este despliegue se realizará en Google Cloud Platform (GCP) utilizando MicroK8s en 6 máquinas virtuales(3 para base de datos  y las otras 3 para WordPress). La aplicación debe contar con balanceador de cargas y alta disponibilidad en todas las capas (aplicación, base de datos y almacenamiento). Se permite el escalado dinámico de nodos en el clúster de Kubernetes.
+El reto consiste en desplegar una aplicación de código abierto WordPress, en un clúster de Kubernetes con alta disponibilidad. Este despliegue se realizará en Google Cloud Platform (GCP) utilizando MicroK8s en 5 máquinas virtuales(1 para base de datos, 1 para el balanceador de carga y las otras 3 para WordPress). La aplicación debe contar con balanceador de cargas y alta disponibilidad en todas las capas (aplicación, base de datos y almacenamiento). Se permite el escalado dinámico de nodos en el clúster de Kubernetes.
 
 Nos estamos basando en la siguiente arquitectura :
 ![image](https://github.com/sgomeza13/reto4_telematica/assets/74980999/567790a2-9db2-49e3-a0c6-84bd292923eb)
