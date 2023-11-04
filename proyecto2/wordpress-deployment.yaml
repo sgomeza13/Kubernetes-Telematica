@@ -1,41 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
+  name: wordpress
   labels:
     app: wordpress
-  name: wordpress
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  creationTimestamp: null
-  labels:
-    app: wordpress
-  name: wordpress
-spec:
-  replicas: 1
   selector:
     matchLabels:
       app: wordpress
-  strategy: {}
+      tier: frontend
+  strategy:
+    type: Recreate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: wordpress
+        tier: frontend
     spec:
       containers:
-      - image: wordpress
+      - image: wordpress:6.2.1-apache
         name: wordpress
-        resources: {}
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        - name: WORDPRESS_DB_USER
+          value: wordpress
+        ports:
+        - containerPort: 80
+          name: wordpress
         volumeMounts:
-        - mountPath: "/var/www/html"
-        name: mypd
-    volumes:
-      - name: mypd
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
         persistentVolumeClaim:
-          claimName: myclaim
+          claimName: wp-pv-claim
