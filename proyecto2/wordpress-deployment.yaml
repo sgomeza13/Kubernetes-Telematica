@@ -22,7 +22,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: 34.132.5.234:3306
+          value: 34.132.5.234
         - name: WORDPRESS_DB_PASSWORD
           value: password
         - name: WORDPRESS_DB_USER
