@@ -20,14 +20,10 @@ spec:
       containers:
       - image: mysql:5.7
         name: mysql
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "1500m"        
+      
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: Password123
-        
         - name: MYSQL_DATABASE
           value: wordpress
         - name: MYSQL_USER
