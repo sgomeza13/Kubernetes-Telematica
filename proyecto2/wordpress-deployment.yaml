@@ -27,21 +27,25 @@ spec:
             secretKeyRef:
               name: dev-db-secret
               key: username
+
         - name: WORDPRESS_DB_HOST
           valueFrom:
             secretKeyRef:
               name: dev-db-secret
               key: address
+
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: dev-db-secret
-              key: password
+              key: password              
+
         volumeMounts:
         - mountPath: "/var/www/html"
           name: mypd
-  volumes:
-    - name: mypd
-      persistentVolumeClaim:
-        claimName: nfs
+      volumes:
+        - name: mypd
+          persistentVolumeClaim:
+            claimName: nfs
+      
 status: {}
