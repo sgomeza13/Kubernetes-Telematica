@@ -23,22 +23,14 @@ spec:
         resources: {}
         env:
         - name: WORDPRESS_DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: dev-db-secret
-              key: username
+          value: sgomeza13
+
 
         - name: WORDPRESS_DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: dev-db-secret
-              key: address
+          value: 10.17.64.3
 
         - name: WORDPRESS_DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: dev-db-secret
-              key: password              
+          value: password             
 
         volumeMounts:
         - mountPath: "/var/www/html"
