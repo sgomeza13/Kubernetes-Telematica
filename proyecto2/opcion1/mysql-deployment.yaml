@@ -18,9 +18,8 @@ spec:
         tier: mysql
     spec:
       containers:
-      - image: mysql:5.7
+      - image: mysql:5.8
         name: mysql
-      
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: Password123
@@ -30,7 +29,6 @@ spec:
           value: wordpress
         - name: MYSQL_PASSWORD
           value: Password123
-
         ports:
         - containerPort: 3306
           name: mysql
