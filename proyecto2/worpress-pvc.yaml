@@ -1,11 +1,25 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: myclaim
+  name: nfs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 10.108.12.17
+    path: "/"
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nfs
 spec:
   accessModes:
     - ReadWriteMany
-  volumeMode: Filesystem
+  storageClassName: ""
   resources:
     requests:
-      storage: 3Gi
+      storage: 10Gi
