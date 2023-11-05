@@ -30,5 +30,5 @@ spec:
       volumes:
         - name: mypvc
           gcePersistentDisk:
-            pdName: pvc-2610b1ed-155d-41e5-9186-012827f15fca 
+            pdName: nfs-disk-us-central1-c-zone 
             fsType: ext4
