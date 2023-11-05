@@ -9,5 +9,4 @@ spec:
     - port: 80
   selector:
     app: wordpress
-    tier: frontend
   type: LoadBalancer
