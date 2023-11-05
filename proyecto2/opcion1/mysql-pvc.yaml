@@ -9,7 +9,7 @@ spec:
     - ReadWriteOnce
   nfs:
     server: 10.8.12.66
-    path: "/"
+    path: "/mysql"
 
 ---
 kind: PersistentVolumeClaim

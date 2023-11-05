@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.8.12.66
-    path: "/srv"
+    path: "/wordpress"
 
 ---
 kind: PersistentVolumeClaim
