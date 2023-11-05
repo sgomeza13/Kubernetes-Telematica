@@ -30,5 +30,5 @@ spec:
       volumes:
         - name: mypvc
           gcePersistentDisk:
-            pdName: nfs-disk-wordpress
+            pdName: nfs-disk-2
             fsType: ext4

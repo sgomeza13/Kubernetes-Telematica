@@ -4,7 +4,7 @@ metadata:
   name: nfs-db
 spec:
   capacity:
-    storage: 2Gi
+    storage: 8Gi
   accessModes:
     - ReadWriteOnce
   nfs:
@@ -22,4 +22,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 2Gi
+      storage: 8Gi
