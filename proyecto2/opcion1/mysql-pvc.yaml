@@ -9,7 +9,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.108.3.247
-    path: "/mnt"
+    path: "/"
 
 ---
 kind: PersistentVolumeClaim
