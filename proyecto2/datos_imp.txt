@@ -1,4 +1,4 @@
-database: <public ip> = 34.132.5.234
+database: <private ip> = 10.17.64.3
 db user: <user> = sgomeza13
 password: password
 
