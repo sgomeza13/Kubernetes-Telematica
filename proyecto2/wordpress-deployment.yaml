@@ -21,7 +21,24 @@ spec:
       - image: wordpress
         name: wordpress
         resources: {}
-     
+        env:
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: dev-db-secret
+              key: username
+
+        - name: WORDPRESS_DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: dev-db-secret
+              key: address
+
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dev-db-secret
+              key: password              
 
         volumeMounts:
         - mountPath: "/var/www/html"
