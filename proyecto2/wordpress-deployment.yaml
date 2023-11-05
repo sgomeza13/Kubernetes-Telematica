@@ -1,43 +1,27 @@
+# wordpress-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
-  labels:
-    app: wordpress
   name: wordpress
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: wordpress
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: wordpress
     spec:
       containers:
-      - image: wordpress
-        name: wordpress
-        resources: {}
-        env:
-        - name: WORDPRESS_DB_USER
-          value: sgomeza13
-
-
-        - name: WORDPRESS_DB_HOST
-          value: 10.17.64.3
-
-        - name: WORDPRESS_DB_PASSWORD
-          value: password             
-
-        volumeMounts:
-        - mountPath: "/var/www/html"
-          name: mypd
+        - name: wordpress
+          image: wordpress:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: mypd
+              mountPath: /var/www/html
       volumes:
         - name: mypd
           persistentVolumeClaim:
             claimName: nfs
-      
-status: {}
