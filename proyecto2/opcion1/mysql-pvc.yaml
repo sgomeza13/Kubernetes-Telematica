@@ -10,15 +10,3 @@ spec:
   nfs:
     server: 10.8.12.66
 
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: nfs-db
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: ""
-  resources:
-    requests:
-      storage: 8Gi
