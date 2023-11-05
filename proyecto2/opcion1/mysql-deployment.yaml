@@ -22,13 +22,13 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: Password123
+          value: Jdslk+3123ab
         - name: MYSQL_DATABASE
           value: wordpress
         - name: MYSQL_USER
           value: wordpress
         - name: MYSQL_PASSWORD
-          value: Password123
+          value: Jdslk+3123a
         ports:
         - containerPort: 3306
           name: mysql
