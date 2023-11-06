@@ -26,17 +26,23 @@ El objetivo de la actividad fue desplegar una aplicación monolítica como lo es
 - **No se logró**:
  - Conexión de la base de datos dentro del cluster.
 
-## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
+# 2. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
+## como se Configura  y ejecuta.
 
-# 3. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
-
-Lenguaje de programacion: 
-
-Librerias :
-
-## como se compila y ejecuta.
-
+1. Crear el cluster de Kubernetes estándar (no autopilot).
+2. Clonar el repositorio.
+3. Crear un disco nuevo en el compute engine.
+4. Modificar el archivo 001-nfs-server.yaml ,poniendole el pdname por el nombre del disco creado en el paso anterior.
+   ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/a90432c8-3115-4f62-9cb2-da89046f32e0)
+5. Ejecutar el siguiente comando:
+```
+kubectl apply -f 001-nfs-server.yaml
+```
+6. Ejecutar el siguiente comando:
+```
+kubectl apply -f 002-nfs-server-service.yaml
+```
 
 
 ## detalles del desarrollo.
