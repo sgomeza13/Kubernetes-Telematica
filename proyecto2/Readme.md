@@ -11,15 +11,20 @@ Edwin Nelson Montoya Múnera - emontoya@eafit.edu.co
 # Kubernetes administrado en EKS (aws) o GKS (gcp)
 
 ## 1. breve descripción de la actividad
-#
+El objetivo de la actividad fue desplegar una aplicación monolítica como lo es WordPress de manera que se garantice la alta disponibilidad, el buen manejo de los recursos y el mejoramiento de la experiencia del usuario. Haciendo uso de los servicios administrados que nos brinda los proveedores de Cloud (en este caso GCP) para facilitar y tener garantía de todas las configuraciones de despliegue.
 
 ## Video
 - https://drive.google.com/file/d/1EJMp9s5z5UwWRo1aAlNRT52FGKiKanZD/view?usp=sharing
+  
 ## ¿Que se logró y que no se logró?:
 - **Se logró**
+  
+ - Conexión NFS entre los nodos del cluster.
+ - Creación y conexión a base de datos mediante servicio administrado.	
+ -implementación de LoadBalancer para el despliegue de la aplicación a internet.
 
 - **No se logró**:
-
+ - Conexión de la base de datos dentro del cluster.
 
 ## 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas:
 
