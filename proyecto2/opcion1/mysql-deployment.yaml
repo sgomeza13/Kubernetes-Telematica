@@ -21,7 +21,7 @@ spec:
       - image: mysql:5.7
         name: mysql
         env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_ROOT_PASSWORD # ideamente se implementarian todos estos datos con SECRETS
           value: Jdslk+3123ab
         - name: MYSQL_DATABASE
           value: wordpress
@@ -38,4 +38,4 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: nfs-db
+          claimName: mysql
