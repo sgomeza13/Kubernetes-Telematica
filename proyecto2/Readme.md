@@ -159,7 +159,7 @@ kubectl apply -f wordpress-service.yaml
 9. Ingresar valores de la base de datos en Wordpress
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/5f0be649-066d-46bc-bd6b-99979cf00f0d)
 
-Para mas detalles ver el video.
+Para mas detalles ver el video. (por ahora solo para la opcion2)
 ## Video
 - https://drive.google.com/file/d/1EJMp9s5z5UwWRo1aAlNRT52FGKiKanZD/view?usp=sharing
 
