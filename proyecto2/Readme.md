@@ -19,13 +19,15 @@ El objetivo de la actividad fue desplegar una aplicación monolítica como lo es
  - Conexión NFS entre los nodos del cluster.
  - Creación y conexión a base de datos mediante servicio administrado.	
  -implementación de LoadBalancer para el despliegue de la aplicación a internet.
+- Creacion de base de datos con alta disponibilidad dentro del cluster
 
 - **No se logró**:
- - Conexión de la base de datos dentro del cluster.
+ - Nada
 
 # 2. Descripción del ambiente de desarrollo y técnico: lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
 
 ## como se Configura  y ejecuta.
+## Opcion 1 - Base de datos HA dentro del cluster (todos los archivos estan dentro de la carpeta opcion1)
 ### Creación Wordpress
 1. Crear el cluster de Kubernetes estándar (no autopilot).
 2. Clonar el repositorio.
@@ -45,8 +47,87 @@ kubectl apply -f 002-nfs-server-service.yaml
 kubectl get services
 ```
 (copiar el cluster IP del nfs-server)
+8. Modificar el archivo: wordpress-pvc.yaml y mysql-pvc.yaml
+![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/e315f4cd-0cf9-4bbc-908f-3606194fbb01)
+
+(Cambiar la IP por la obtenida en el paso anterior en ambos archivos en el server del PersistentVolume)
+
+9. Obetener y guardar la id del pod donde corre el el nfs-server
+```
+kubectl get pods
+```
+![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/67118511/4f36cc30-3cc2-4a87-a08b-06e3bec690d2)
+
+10. crear las carpetas donde quedaran los volume claims de mysql y wordpress
+```
+kubectl exec -it <pod_name> -- /bin/sh -c "mkdir /exports/mysql"
+
+```
+```
+kubectl exec -it <pod_name> -- /bin/sh -c "mkdir /exports/wordpress"
+
+```
+cambiar <pod_name> por el id del pod, ejemplo: 
+![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/67118511/5e3270be-416f-462b-a620-9b7fc39879d6)
+
+11. Crear los pv y pvc de wordpress y mysql
+```
+kubectl apply -f mysql-pvc.yaml
+```
+
+```
+kubectl apply -f wordpress-pvc.yaml
+```
+
+12. Crear el deployment de mysql
+```
+kubectl apply -f mysql-deployment.yaml
+```
+Esperar hasta que se cree correctamente
+
+13. Crear el service de mysql
+```
+kubectl apply -f mysql-service.yaml
+```
+Esperar hasta que se cree correctamente
+
+
+12. Crear el deployment de wordpress
+```
+kubectl apply -f wordpress-deployment.yaml
+```
+Esperar hasta que se cree correctamente
+
+13. Crear el service de wordpress
+```
+kubectl apply -f wordpress-service.yaml
+```
+
+
+## Opcion2 - Servicio de base de datos Cloud SQL(todos los archivos referidos se encuentran en la carpeta opcion2)
+### Creación Wordpress
+1. Crear el cluster de Kubernetes estándar (no autopilot).
+2. Clonar el repositorio.
+3. Crear un disco nuevo en el compute engine. (el disco debe estar en la misma region del cluster)
+4. Modificar el archivo 001-nfs-server.yaml ,poniendole el pdname por el nombre del disco creado en el paso anterior.
+   ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/a90432c8-3115-4f62-9cb2-da89046f32e0)
+   
+6. Ejecutar el siguiente comando:
+```
+kubectl apply -f 001-nfs-server.yaml
+```
+6. Ejecutar el siguiente comando:
+```
+kubectl apply -f 002-nfs-server-service.yaml
+```
+7. Obtener la IP del nfs-server 
+```
+kubectl get services
+```
+(copiar el cluster IP del nfs-server)
 8. Modificar el archivo: wordpress-pvc.yaml
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/e315f4cd-0cf9-4bbc-908f-3606194fbb01)
+
 (Cambiar la IP por la obtenida en el paso anterior)
 9. Ejecutar el siguiente comando:
 ```
@@ -65,21 +146,29 @@ kubectl apply -f wordpress-service.yaml
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/1be3cc99-396f-4b63-87e4-63ace0268e62)
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/49c7f7b6-c446-443d-ae38-babef7a12a98)
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/44be514c-d2c1-46be-bb2b-6d3ed76a9e9d)
-2. Agregar cuenta y crear base de datos
+
+3. Agregar cuenta y crear base de datos
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/ce96771c-95e7-4834-a081-e9555ff9310c)
-3. Crear base de datos dentro de la instancia
+
+5. Crear base de datos dentro de la instancia
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/5c73d49a-70a0-41b9-a0fe-b0ef9dd1f3d7)
-4. Activar alta disponibilidad
+
+7. Activar alta disponibilidad
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/5e0a0c0b-a8c6-483c-834a-321ebe80f2b8)
-6. Ingresar valores de la base de datos en Wordpress
+
+9. Ingresar valores de la base de datos en Wordpress
 ![image](https://github.com/sgomeza13/Kubernetes-Telematica/assets/74980999/5f0be649-066d-46bc-bd6b-99979cf00f0d)
 
-Para mas detalles verl el video.
+Para mas detalles ver el video.
 ## Video
 - https://drive.google.com/file/d/1EJMp9s5z5UwWRo1aAlNRT52FGKiKanZD/view?usp=sharing
 
 ## IP del servicio corriendo ACTUALMENTE
+**Opcion 2**
 http://34.67.224.168/
+
+**Opcion 1**
+http://34.136.24.58
 
 ## Comparación entre opcion 1 y opcion 2
 La elección depende de sus necesidades específicas y prioridades por ejemplo:
