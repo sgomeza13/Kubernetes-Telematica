@@ -163,7 +163,7 @@ Para mas detalles ver el video. (por ahora solo para la opcion2)
 ## Video
 - https://drive.google.com/file/d/1EJMp9s5z5UwWRo1aAlNRT52FGKiKanZD/view?usp=sharing
 
-## IP del servicio corriendo ACTUALMENTE
+## IP del servicio (actualmente caido)
 **Opcion 2**
 http://34.67.224.168/
 
